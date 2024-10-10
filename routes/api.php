@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| API Routeshttp://localhost:8000/api/produits
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
@@ -21,6 +21,12 @@ Route:: get('/produits/{id}', [ProductController::class, 'show']);
 
 // AJOUT D'UN NOUVEAU PRODUIT
 Route:: post('/produits', [ProductController::class, 'store']);
+
+// METTRE UN JOUR UN PRODUIT DEJA EXSITANT
+Route::put('/produits/{id}', [ProductController::class, 'update']);
+
+//SUPPRIMER UN PRODUIT 
+Route:: delete('/produit/{id}', [ProductController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
