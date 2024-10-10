@@ -9,6 +9,12 @@ class ProductController extends Controller
 // METHODES = index - store - show - update - destroy//
 
 {
+
+    // Permet de retourner une vue (produit.blade.php)
+    public function create()
+{
+    return view('produit'); 
+}
     
     public function index()
     {
@@ -29,12 +35,14 @@ class ProductController extends Controller
             'product_name_fr' => 'required|string|max:255',
             'product_stock_units' => 'required|integer|min:0',
             'product_priceEUR' => 'required|integer|min:0',
+            'product_maker' => 'required|string|max:255',
         ], 
         //Message en cas d'erreur de validation
         [
             'product_name_fr.required' => 'Le nom du produit est obligatoire.',
             'product_stock_units.required' => 'Le stock est obligatoire.',
-            'product_priceEUR.required' => 'Le prix est obligatoire et doit être un nombre entier.'
+            'product_priceEUR.required' => 'Le prix est obligatoire et doit être un nombre entier.',
+            'product_maker.required' => 'Le fabricant est obligatoire.',
         ]);
 
         $nvProduit = Product::create($validation);

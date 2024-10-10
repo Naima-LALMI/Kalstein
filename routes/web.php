@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// ROUTE POUR AFFICHER LE FORMULAIRE POUR AJOUTER UN PRODUIT
+Route::get('/produits/create',[ProductController::class,'create'])->name('produits.create');
+
+// ROUTE POUR AJOUTER  D'UN NOUVEAU PRODUIT
+Route:: post('/produits', [ProductController::class, 'store'])->name('produits.ajout');
