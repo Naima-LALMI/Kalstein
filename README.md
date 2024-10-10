@@ -64,3 +64,69 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Documentation du Test Technique
+
+Ce document présente les étapes suivies pour créer une API avec Laravel, ainsi que l'intégration d'une base de données MySQL existante. Les instructions sont détaillées pour une meilleure compréhension.
+
+# Étapes pour la configuration du projet
+
+# 1. Créer une nouvelle base de données MySQL
+* Ouvrir Laragon et accéder à MySQL ou à phpMyAdmin.
+* Créer une nouvelle base de données :
+    * Nom de la base de données : kalstein.
+    * 
+# 2. Importer le fichier SQL
+* Aller dans MySQL et sélectionner la base de données kalstein.
+* Cliquer sur l'onglet Importer.
+* Choisir le fichier SQL téléchargé (contenant la table wp_k_products).
+* Lancer l'importation en cliquant sur Exécuter.
+* Une fois l'importation réussie, la table wp_k_products sera disponible dans la base de données kalstein.
+
+# 3. Créer et démarrer une application Laravel
+* Créer une nouvelle application Laravel :
+```laravel new example-app```
+* Aller dans le répertoire du projet :
+```cd example-app```
+* Démarrer le serveur de développement local :
+```php artisan serve```
+* Accéder à l'application en local à l'adresse : **http://localhost:8000.**
+
+# 4. Intégrer une base de données MySQL existante dans Laravel
+* Configurer les informations de la base de données MySQL importée :
+    * Ouvrir le fichier ```.env.```
+    * Modifier la ligne 14 pour remplacer DB_DATABASE par le nom de ta base de données MySQL :
+```.env``` --> ```DB_DATABASE=kalstein```
+
+# 5. Création d’un modèle Eloquent
+* Créer un modèle :
+```php artisan make:model Product```
+Pas besoin de faire la migration car la table existe déjà dans la base de données.
+
+# 6. Création du contrôleur pour les produits
+* Créer un contrôleur API :
+```php artisan make:controller ProductController --api```
+    * Créer les fonctions pour les actions CRUD :
+        * Méthodes de récupération :
+            * all()
+            * find($id)
+            * findOrFail($id)
+        * Méthodes de création :
+            * create($data)
+            * update($data)
+        * Méthode de suppression :
+            * destroy($id)
+            * delete()
+
+# 7. Création des routes fichier api.php
+Définir les routes dans le fichier routes/api.php :
+Utiliser les méthodes GET, POST, PUT, DELETE pour définir les points d'accès à l'API.
+
+# 8. Utilisation de l’outil Postman
+Vérifier les chemins de l’API en utilisant Postman pour s'assurer que toutes les routes fonctionnent correctement.
+
+# 9. Création des routes fichier web.php
+ route create / store
+
+# 10. Creation d'un formulaire dans le fichier produit.blade.php
+Qui permettra de créer un nouveau produit 
