@@ -17,5 +17,5 @@ class Product extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['product_name_fr', 'product_stock_units', 'product_priceEUR'];
+    protected $fillable = ['product_name_fr', 'product_stock_units', 'product_priceEUR', 'product_maker'];
 }
