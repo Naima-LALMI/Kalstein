@@ -9,7 +9,7 @@
     </head>
     <body>
   <h1>Gestion des produits chez Kalstein Plus</h1>
-  h1>Ajouter un Nouveau Produit</h1>
+  <h2>Ajouter un Nouveau Produit</h2>
     <form action="{{ route('produits.ajout') }}" method="POST">
         @csrf
         <label for="product_name_fr">Nom du Produit :</label>
